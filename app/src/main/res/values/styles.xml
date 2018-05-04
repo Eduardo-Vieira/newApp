@@ -13,9 +13,17 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.Fullscreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="InputTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
 
 </resources>
