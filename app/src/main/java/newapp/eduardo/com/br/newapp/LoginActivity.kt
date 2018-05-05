@@ -23,6 +23,7 @@ import android.widget.TextView
 
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
+import android.content.Intent
 
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -247,6 +248,11 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
             try {
                 // Simulate network access.
                 Thread.sleep(2000)
+                // ------------
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                startActivity(intent)
+                //Finalizar o activity fecha o login
+                finish()
             } catch (e: InterruptedException) {
                 return false
             }
