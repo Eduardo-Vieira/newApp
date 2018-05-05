@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_login"
+    android:background="@mipmap/bg_login2"
     android:backgroundTintMode="src_in"
+    android:focusable="auto"
+    android:focusableInTouchMode="true"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LoginActivity">
 
     <!-- Login progress -->
@@ -26,18 +24,26 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="auto"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgLogo"
                 android:layout_width="match_parent"
                 android:layout_height="66dp"
+                android:focusable="auto"
+                android:focusableInTouchMode="true"
                 android:tint="@android:color/white"
                 app:srcCompat="@drawable/ic_wb_incandescent_black_24dp" />
 
@@ -45,6 +51,8 @@
                 android:id="@+id/lblLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="auto"
+                android:focusableInTouchMode="true"
                 android:fontFamily="casual"
                 android:text="Novo App Android"
                 android:textAlignment="center"
@@ -87,6 +95,17 @@
                 android:singleLine="true"
                 android:textColor="@color/colorPrimaryDark" />
 
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:buttonTint="@android:color/white"
+                android:checked="false"
+                android:focusableInTouchMode="true"
+                android:text="@string/checked_email"
+                android:textColor="@android:color/white" />
+
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
@@ -97,6 +116,17 @@
                 android:text="@string/action_sign_in"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/password_in_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80sp"
+                android:layout_marginRight="80sp"
+                android:background="@drawable/bnt_link_app"
+                android:text="@string/action_password"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
     </ScrollView>

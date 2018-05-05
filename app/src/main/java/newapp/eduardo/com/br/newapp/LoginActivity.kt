@@ -23,7 +23,13 @@ import android.widget.TextView
 
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
+import android.content.Context
+
 import android.content.Intent
+import android.graphics.Rect
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -35,6 +41,25 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private var mAuthTask: UserLoginTask? = null
+
+    /**
+     * Função para ocultar o teclado quando ele ficar fora do foco do EditText
+     */
+    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+        if (event?.action == MotionEvent.ACTION_DOWN) {
+            var v = currentFocus
+            if (v is EditText) {
+                var outRect = Rect()
+                v.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    v.clearFocus()
+                    val inputManager:InputMethodManager =getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputManager.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.SHOW_FORCED)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +75,17 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         })
 
         email_sign_in_button.setOnClickListener { attemptLogin() }
+
+        // Recuperar senha
+        password_in_button.setOnClickListener { recoverPassword() }
+
+
+    }
+
+    // Abrir a activity RecouverPasswordActivity mas não finaliza a LoginActivity
+    private  fun recoverPassword(){
+        val intent = Intent(this@LoginActivity, RecouverPasswordActivity::class.java)
+        startActivity(intent)
     }
 
     private fun populateAutoComplete() {
@@ -299,3 +335,4 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         private val DUMMY_CREDENTIALS = arrayOf("foo@example.com:hello", "bar@example.com:world")
     }
 }
+
