@@ -106,7 +106,7 @@
                 app:addTextChangedListener="@{viewModel.passwordTextWatcher}" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/ckEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -114,7 +114,8 @@
                 android:checked="false"
                 android:focusableInTouchMode="true"
                 android:text="@string/checked_email"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                app:addText
 
             <Button
                 android:id="@+id/email_sign_in_button"

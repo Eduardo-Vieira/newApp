@@ -8,7 +8,7 @@ class User(private var email:String, private var password:String): BaseObservabl
     val isDataValid: Boolean
     get() = (!TextUtils.isEmpty(getEmail()))
             && Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches()
-            && getPassword().length > 6
+            && getPassword().length >= 6 //Comprimento padão da senha
 
     fun getPassword(): String {
         return password
@@ -25,5 +25,6 @@ class User(private var email:String, private var password:String): BaseObservabl
     fun setPassword(password: String) {
         this.password = password
     }
+
 }
 
